@@ -1,0 +1,10 @@
+Platform for users to log DND sessions, including things like the players present 
+(tagging other users?), the campaign being played, and/or session notes.
+The problem being solved is having coherent notes for each session,
+so that, when next session comes around, everyone has a good basis for what
+happened last time.The intended user is a DND player or group of players.
+Users will be able to specify the DND group(s) they're in. They can also can 
+post session details by group, can search for sessions by date, name, etc., 
+and comment on a session if, for example, the original poster
+forgot a detail. 
+

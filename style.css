@@ -1,0 +1,55 @@
+html {
+  font-family: Macondo Swash Caps, Garamond;
+  background-color: rgb(250, 242, 215);
+  color: rgb(97, 30, 15);
+}
+
+body {
+  margin: 0;
+}
+
+a {
+  color: rgb(167, 0, 0);
+}
+
+a:active {
+  color: rgb(255, 157, 0);
+  font-weight: bold;
+}
+
+nav {
+  padding: 30px 10px;
+  background-color: #e5d2ba;
+  border-bottom: 1.5px solid rgb(167, 0, 0);
+  border-radius: 2px;
+}
+
+nav a {
+  padding: 0 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+  font-family: MedievalSharp;
+  color: rgb(97, 30, 15);
+  background-color: rgb(255, 252, 237);
+  border-radius: 2.5px;
+  border: 1.5px solid rgb(167, 0, 0);
+  margin-bottom: 5px;
+}
+
+input[type="submit"] {
+  font-family: MedievalSharp;
+  color: rgb(97, 30, 15);
+  background-color: rgb(228, 210, 186);
+  border-radius: 2.5px;
+  border: 1.5px solid rgb(167, 0, 0);
+}
+
+h2,form {
+  text-align: center;
+}
+
+/* .container {
+  display: grid;
+} */
