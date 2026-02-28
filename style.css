@@ -1,6 +1,8 @@
 html {
-  font-family: Macondo Swash Caps, Garamond;
-  background-color: rgb(250, 242, 215);
+  font-family: MedievalSharp, Garamond;
+  background-image: url(./images/background.jpg);
+  background-repeat: repeat;
+  background-size: 200px;
   color: rgb(97, 30, 15);
 }
 
@@ -8,24 +10,53 @@ body {
   margin: 0;
 }
 
-a {
-  color: rgb(167, 0, 0);
-}
-
 a:active {
   color: rgb(255, 157, 0);
   font-weight: bold;
 }
 
+header {
+  vertical-align: middle;
+  border-bottom: 10px solid transparent;
+  border-image: url(./images/border.png) 23 round;
+}
+
 nav {
-  padding: 30px 10px;
-  background-color: #e5d2ba;
-  border-bottom: 1.5px solid rgb(167, 0, 0);
-  border-radius: 2px;
+  background-image: url(./images/header-background.jpg);
+  background-size: 140px;
+  background-repeat: repeat;
+  border: solid 5px rgb(97, 30, 15);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: right;
+  padding: 10px 0;
+}
+
+nav ul {
+  vertical-align: middle;
+  margin: 0;
+  background-image: url(./images/header-background-patternless.jpg);
+  mask: radial-gradient(16px at 16px 16px, #0000 98%, #000) -16px -16px;
+}
+
+nav ul li {
+  list-style-type: none;
+  display: inline-block;
+  vertical-align: middle;
 }
 
 nav a {
-  padding: 0 5px;
+  padding: 0 15px;
+  vertical-align: middle;
+  margin-bottom: 10px;
+  font-family: Jim Nightshade;
+  font-size: 28px;
+  text-decoration: none;
+  color: rgb(97, 30, 15);
+}
+
+.logo {
+  width: 225px;
 }
 
 input[type="text"],
@@ -39,17 +70,45 @@ input[type="password"] {
 }
 
 input[type="submit"] {
-  font-family: MedievalSharp;
+  font-family: Jim Nightshade;
+  font-size: 32px;
   color: rgb(97, 30, 15);
-  background-color: rgb(228, 210, 186);
-  border-radius: 2.5px;
-  border: 1.5px solid rgb(167, 0, 0);
+  background-image: url(./images/header-background-patternless.jpg);
+  border: none;
+  padding: 5px 30px;
+  mask: radial-gradient(12px at 12px 12px, #0000 98%, #000) -12px -12px;
 }
 
-h2,form {
+input[type="submit"]:hover {
+  background-image: none;
+  background-color: #f2ac2e;
+}
+
+h2 {
+  font-family: Jim Nightshade;
+  font-weight: normal;
+  font-size: 32px;
+  background-image: url(./images/header-background-patternless.jpg);
+  border: none;
+  padding: 5px 30px;
+  text-align: center;
+  margin: 20px auto;
+  mask: radial-gradient(12px at 12px 12px, #0000 98%, #000) -12px -12px;
+}
+
+#register {
+  width: 300px;
+}
+
+#login {
+  width: 150px;
+}
+
+#session-log {
+  width: 200px;
+}
+
+h2,
+form {
   text-align: center;
 }
-
-/* .container {
-  display: grid;
-} */

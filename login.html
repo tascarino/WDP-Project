@@ -9,28 +9,34 @@
   <link rel="stylesheet" href="style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Macondo+Swash+Caps&family=MedievalSharp&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Jim+Nightshade&family=Macondo+Swash+Caps&family=MedievalSharp&display=swap"
     rel="stylesheet">
 </head>
 
 <body>
   <header>
     <nav>
-      <a href="register.html">Register</a>
-      <a href="#login.html">Login</a>
-      <a href="sessionlog.html">Session Log</a>
+      <ul>
+        <li><a href="register.html">Register</a></li>
+        <li><a href="#login.html">Login</a></li>
+        <li><a href="sessionlog.html">Session Log</a></li>
+        <li><img class="logo" src="./images/logo.png" alt=""></li>
+      </ul>
     </nav>
   </header>
 
   <main>
-    <h2>&#9734;Login&#9734;</h2>
-    <label for="username">Username: </label>
-    <input type="text" id="username">
-    <br>
-    <label for="password">Password: </label>
-    <input type="password" id="password">
-    <br><br>
-    <input type="submit" value="Login">
+    <h2 id="login">&#11090;Login&#11090;</h2>
+    <form>
+      <label for="username">Username: </label>
+      <input type="text" id="username">
+      <br>
+      <label for="password">Password: </label>
+      <input type="password" id="password">
+      <br><br>
+      <input type="submit" value="Login">
+    </form>
   </main>
 
 </body>
