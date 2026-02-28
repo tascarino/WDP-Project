@@ -16,7 +16,6 @@ a:active {
 }
 
 header {
-  vertical-align: middle;
   border-bottom: 10px solid transparent;
   border-image: url(./images/border.png) 23 round;
 }
@@ -33,7 +32,6 @@ nav {
 }
 
 nav ul {
-  vertical-align: middle;
   margin: 0;
   background-image: url(./images/header-background-patternless.jpg);
   mask: radial-gradient(16px at 16px 16px, #0000 98%, #000) -16px -16px;
@@ -47,7 +45,6 @@ nav ul li {
 
 nav a {
   padding: 0 15px;
-  vertical-align: middle;
   margin-bottom: 10px;
   font-family: Jim Nightshade;
   font-size: 28px;
