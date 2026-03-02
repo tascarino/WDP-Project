@@ -10,10 +10,7 @@ body {
   margin: 0;
 }
 
-a:active {
-  color: rgb(255, 157, 0);
-  font-weight: bold;
-}
+
 
 header {
   border-bottom: 10px solid transparent;
@@ -43,13 +40,23 @@ nav ul li {
   vertical-align: middle;
 }
 
-nav a {
+nav ul li a {
+  display: inline-block;
   padding: 0 15px;
-  margin-bottom: 10px;
   font-family: Jim Nightshade;
   font-size: 28px;
   text-decoration: none;
   color: rgb(97, 30, 15);
+  transition: transform .25s, color .25s;
+}
+
+nav ul li a:hover {
+  transform: scale(105%);
+  color: #f8aa00;
+}
+
+nav ul li a:active {
+  font-weight: bold;
 }
 
 .logo {
@@ -70,15 +77,17 @@ input[type="submit"] {
   font-family: Jim Nightshade;
   font-size: 32px;
   color: rgb(97, 30, 15);
+  background-color: #f7bb4a;
   background-image: url(./images/header-background-patternless.jpg);
   border: none;
   padding: 5px 30px;
   mask: radial-gradient(12px at 12px 12px, #0000 98%, #000) -12px -12px;
+  transition: transform .25s, background-blend-mode .25s;
 }
 
 input[type="submit"]:hover {
-  background-image: none;
-  background-color: #f2ac2e;
+  background-blend-mode:color-burn;
+  transform: scale(105%);
 }
 
 h2 {
@@ -108,4 +117,20 @@ h2 {
 h2,
 form {
   text-align: center;
+}
+
+footer {
+  border-top: 10px solid transparent;
+  border-image: url(./images/border.png) 23 round;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+footer div {
+  background-image: url(./images/header-background.jpg);
+  background-size: 140px;
+  background-repeat: repeat;
+  height: 50px;
+  border: solid 5px rgb(97, 30, 15);
 }
