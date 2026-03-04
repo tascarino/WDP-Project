@@ -10,8 +10,6 @@ body {
   margin: 0;
 }
 
-
-
 header {
   border-bottom: 10px solid transparent;
   border-image: url(./images/border.png) 23 round;
@@ -67,7 +65,7 @@ input[type="text"],
 input[type="password"] {
   font-family: MedievalSharp;
   color: rgb(97, 30, 15);
-  background-color: rgb(255, 252, 237);
+  background-color: #f9f7ea;
   border-radius: 2.5px;
   border: 1.5px solid rgb(167, 0, 0);
   margin-bottom: 5px;
@@ -86,7 +84,7 @@ input[type="submit"] {
 }
 
 input[type="submit"]:hover {
-  background-blend-mode:color-burn;
+  background-blend-mode: color-burn;
   transform: scale(105%);
 }
 
