@@ -1,6 +1,6 @@
 ## Description of Project
 
-This project is a platform for users to log DND sessions, including things like the players present, the campaign being played, and session notes. 
+This project is a platform for users to log DND sessions, including details such as the players present, the campaign being played, and session notes. 
 
 ## ERD and Business Rules
 
@@ -12,4 +12,4 @@ This diagram shows a simple setup for an app where players can write session log
 
 ![Relations](./images/relations.png)
 
-This diagram is a cleaner, more detailed version of the system. It breaks everything into separate tables—players, characters, campaigns, sessions, and comments—so the data stays organized and avoids duplicates. Its purpose is to show how all the pieces of a campaign fit together in a well‑structured database.
+This diagram is a cleaner, more detailed version of the system. It breaks everything into separate tables (players, characters, campaigns, sessions, and comments), so the data stays organized and duplicates are avoided. Its purpose is to show how all the pieces of a campaign fit together in a well‑structured database.
