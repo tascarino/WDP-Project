@@ -5,3 +5,7 @@ This project is a platform for users to log DND sessions, including things like 
 ## ERD and Business Rules
 
 ![ERD with Business Rules](./images/ERD.png)
+
+## Relations
+
+![Relations](./images/relations.png)
