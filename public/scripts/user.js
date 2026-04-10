@@ -21,10 +21,13 @@ function login(e) {
 
     console.log(user)
   } else {
-    console.log("Password sucks! Do better.")
+    console.log("Password sucks! Do better. (At least 10 characters)")
   }
 }
 
 function checkPassword(password) {
-  return true
+  if(password.length >= 10){
+    return true
+  }
+  return false
 }
