@@ -1,9 +1,11 @@
-// grab the form and add to a variable
+// grab the forms and add to a variable
 let loginForm = document.getElementById("login-form")
+let registrationForm = document.getElementById("registration-form")
 
-// add event listener to our form by using loginForm name
+// add event listener to forms
 // make sure to check to see if login form exists before adding event listener
 if(loginForm) loginForm.addEventListener('submit', login)
+if(registrationForm) registrationForm.addEventListener('submit', login)
 
 //create function that will take in data from form and create a new user object
 function login(e) {
