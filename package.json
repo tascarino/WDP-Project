@@ -1,0 +1,32 @@
+{
+  "name": "wdp-project",
+  "version": "1.0.0",
+  "description": "Application to log session activity for Dnd campaigns",
+  "keywords": [
+    "dnd"
+  ],
+  "homepage": "https://github.com/tascarino/WDP-Project#readme",
+  "bugs": {
+    "url": "https://github.com/tascarino/WDP-Project/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tascarino/WDP-Project.git"
+  },
+  "license": "ISC",
+  "author": "Taylor Ascarino",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mysql2": "^3.22.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
