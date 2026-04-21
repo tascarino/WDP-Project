@@ -4,25 +4,12 @@ const app = express()
 
 app.use(express.json())
 
-const playerRoutes = require("./server/routes/player")
-app.use("/players", playerRoutes)
+const userRoutes = require("./server/routes/user")
+app.use("/users", userRoutes)
 
-// instead of having a domain name like, www.wartpod.com, 
-// we are using localhost: 3500
+// instead of having a domain name like, www.bestrecipes.com, 
+// we are using localhost:3500
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3500
 
-app.listen(PORT, () => console.log(`Server listening on PORT ${PORT}!!`))
-
-// CORS middleware
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-  res.header("Access-Control-Allow Methods", "GET,POST,PUT,DELETE,OPTIONS");
-});
-
-app.use("/players", playerRoutes);
-
-// app.get('*', fucntion (req, res) {
-//   res.sendFile(path.resolve(__dirname, 'public', ''))
-// });
+app.listen(PORT, () => console.log(`Server listening on port ${PORT}!!`))
