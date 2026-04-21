@@ -10,7 +10,7 @@ const con = mysql.createPool({
 
 const query = (sql, binding) => {
   return new Promise((resolve, reject) => {
-    con.query.apply(sql, binding, (err, result) => {
+    con.query(sql, binding, (err, result, fields) => {
       if (err) reject(err);
       resolve(result);
     });
