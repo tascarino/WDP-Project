@@ -12,7 +12,7 @@ app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
 });
 
-app.use("/players", playerRoutes)
+app.use("/player", playerRoutes)
 
 // instead of having a domain name like, www.bestrecipes.com, 
 // we are using localhost:3500
