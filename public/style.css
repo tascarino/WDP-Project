@@ -51,6 +51,7 @@ nav ul li a {
 nav ul li a:hover {
   transform: scale(105%);
   color: #f8aa00;
+  cursor: pointer;
 }
 
 nav ul li a:active {
