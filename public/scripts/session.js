@@ -17,11 +17,7 @@ function createSessionPost(e){
   let session_notes = document.getElementById("session-desc").value
   
   let player = getCurrentPlayer()
-
-  console.log(player)
   let player_id = getPlayerId(player)
-
-  console.log(player_id)
 
   if(emptyField(session_title) || emptyField(campaign_name)){
     console.log("Must include session title and campaign name, try again.")
@@ -32,8 +28,6 @@ function createSessionPost(e){
       session_notes: session_notes,
       session_creator: cPlayer.player_id
     }
-
-    console.log(session)
 
     fetchData('/session/createSessionPost', session, "POST")
       .then(data => {

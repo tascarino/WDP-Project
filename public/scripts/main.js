@@ -3,7 +3,6 @@ import { getCurrentPlayer, removeCurrentPlayer } from "./player.js";
 let cPlayer = await getCurrentPlayer()
 let nav = document.querySelector('nav')
 
-console.log("Current player:", cPlayer);
 if(cPlayer) {
     nav.innerHTML = `
        <ul>
