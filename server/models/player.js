@@ -9,7 +9,6 @@ async function createPlayerTable() {
       last_name VARCHAR(255),
       username VARCHAR(255) NOT NULL UNIQUE,
       password VARCHAR(255),
-      email VARCHAR(255),
       CONSTRAINT player_pk PRIMARY KEY(player_id)
     );`
 
@@ -25,13 +24,37 @@ createPlayerTable()
 }
 */
 async function login(player) {
-  let cPlayer = await getPlayerByUsername(player.username)
+  let cPlayer = await playerExists(player)
   if(!cPlayer) throw Error("Username not found!")
   
   let match = await bcrypt.compare(player.password, cPlayer.password)
   if(!match) throw Error("Password Incorrect!")
   
   return cPlayer
+}
+
+// Register function
+/*
+{
+  username: "username",
+  password: "password123",
+  first_name: "First",
+  last_name: "Last"
+}
+*/
+async function register(player) {
+  let cPlayer = await playerExists(player)
+  if(cPlayer) throw Error("Username already in use!")
+
+  let hashedPassword = await bcrypt.hash(player.password, 10)
+  
+  let sql = `
+    INSERT INTO Player(first_name, last_name, username, password)
+    VALUES(?, ?, ?, ?)
+  `
+
+  await con.query(sql, [player.first_name, player.last_name, player.username, hashedPassword])
+  return await playerExists(player)
 }
 
 async function getPlayerByUsername(username) {
@@ -50,28 +73,15 @@ async function getAllPlayers() {
     return await con.query(sql)
 }
 
-// Register function
-/*
-{
-  username: "username",
-  password: "password123",
-  first_name: "First",
-  last_name: "Last"
-}
-*/
-async function register(player) {
-  let cPlayer = await getPlayerByUsername(player.username)
-  if(Player) throw Error("Username already in use!")
-
-  let hashedPassword = await bcrypt.hash(player.password, 10)
-  
+async function playerExists(player) {
   let sql = `
-    INSERT INTO User(first_name, last_name, username, password)
-    VALUES(?, ?, ?, ?)
+    SELECT * FROM Player
+    WHERE username=?
   `
 
-  await con.query(sql, [player.first_name, player.last_name, player.username, hashedPassword])
-  return await login(player)
+  let cPlayer = await con.query(sql, [player.username])
+  return cPlayer[0]
 }
+
 
 module.exports = { getAllPlayers, login, register }

@@ -1,3 +1,5 @@
+import { fetchData } from "./main.js"
+
 // grab the forms and add to a variable
 let loginForm = document.getElementById("login-form")
 let registrationForm = document.getElementById("registration-form")
@@ -15,14 +17,15 @@ function login(e) {
   let password = document.getElementById("password").value
   if (checkPassword(password)) {
     const player = {
-      username: username,
-      password: password
+      username: document.getElementById("username").value,
+      password: document.getElementById("password").value
     }
 
-    fetchData('/player/login', player, 'POST')
+    fetchData('/player/login', player, "POST")
       .then(data => {
         if (!data.message) {
-          window.location = "sessionlog.html"
+          setCurrentPlayer(data)
+          window.location.href = "sessionlog.html"
         }
       })
       .catch(err => {
@@ -33,6 +36,7 @@ function login(e) {
   } else {
     console.log("Password sucks! Do better. (At least 10 characters)")
   }
+
 }
 
 //create function that will take in data from form and create a new user object
@@ -44,14 +48,14 @@ function register(e) {
   let username = document.getElementById("username").value
   let password = document.getElementById("password").value
   if (checkPassword(password)) {
-    const user = {
+    const player = {
       first_name: first_name,
       last_name: last_name,
       username: username,
       password: password
     }
 
-    console.log(user)
+    console.log(player)
   } else {
     console.log("Password sucks! Do better. (At least 10 characters)")
   }
@@ -64,21 +68,15 @@ function checkPassword(password) {
   return false
 }
 
-// fetchData function: use for POST, PUT, and DELETE. 
-// Fetch method implementation:
-// fetchData function: use for POST, PUT, and DELETE. 
-// Fetch method implementation:
-async function fetchData(route = '', data = {}, methodType) {
-  const response = await fetch(`http://localhost:3500${route}`, {
-    method: methodType, // *POST, PUT, DELETE, etc.
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(data) // body data type must match "Content-Type" header
-  });
-  if (response.ok) {
-    return await response.json(); // parses JSON response into native JavaScript objects
-  } else {
-    throw await response.json();
-  }
+async function setCurrentPlayer(player) {
+  await localStorage.setItem('player', JSON.stringify(player))
+}
+
+export async function getCurrentPlayer() {
+  return await JSON.parse(localStorage.getItem('player'))
+}
+
+export async function removeCurrentPlayer() {
+  localStorage.removeItem('player')
+  window.location = "login.html"
 }

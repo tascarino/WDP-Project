@@ -13,6 +13,9 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(express.static(__dirname + "/public"))
+app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/public/sessionlog.html')));
+
 app.use("/player", playerRoutes)
 
 // instead of having a domain name like, www.bestrecipes.com, 
