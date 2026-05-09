@@ -17,12 +17,8 @@ async function createPlayerTable() {
 
 createPlayerTable()
 
-/*
-{
-  username: "username",
-  password: "password123"
-}
-*/
+// Login Function
+// READ
 async function login(player) {
   let cPlayer = await playerExists(player)
   if(!cPlayer) throw Error("Username not found!")
@@ -33,15 +29,8 @@ async function login(player) {
   return cPlayer
 }
 
-// Register function
-/*
-{
-  username: "username",
-  password: "password123",
-  first_name: "First",
-  last_name: "Last"
-}
-*/
+// Register Function
+// CREATE
 async function register(player) {
   let cPlayer = await playerExists(player)
   if(cPlayer) throw Error("Username already in use!")
@@ -55,6 +44,33 @@ async function register(player) {
 
   await con.query(sql, [player.first_name, player.last_name, player.username, hashedPassword])
   return await playerExists(player)
+}
+
+// UPDATE
+async function update(player) {
+  let cPlayer = await playerExists(player)
+  if (!cPlayer) throw Error("Player doesn't exist!")
+
+  let sql = `
+    UPDATE player
+    SET first_name=?, 
+        last_name=?, 
+        username=?
+    WHERE player_id=?;
+  `
+
+  await con.query(sql, [player.first_name, player.last_name, player.username, cPlayer.player_id])
+  return await getPlayerByUsername(player.username)
+}
+
+// DELETE
+async function deletePlayer(player) {
+  let cPlayer = await playerExists(player)
+  if (!cPlayer) throw Error("Player doesn't exist!")
+
+  let sql = `
+    
+  `
 }
 
 async function getPlayerByUsername(username) {
@@ -84,4 +100,4 @@ async function playerExists(player) {
 }
 
 
-module.exports = { getAllPlayers, login, register }
+module.exports = { getAllPlayers, login, register, playerExists }

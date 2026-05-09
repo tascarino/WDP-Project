@@ -5,7 +5,6 @@ const Player = require("../models/player")
 router
 .get('/getAllPlayers', async (req, res) => {
     try {
-        console.log("hi!")
         const players = await Player.getAllPlayers()
         res.send(players)
     } catch(err) {

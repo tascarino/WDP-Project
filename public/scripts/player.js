@@ -80,15 +80,19 @@ function checkPassword(password) {
   return false
 }
 
-async function setCurrentPlayer(player) {
-  await localStorage.setItem('player', JSON.stringify(player))
+function setCurrentPlayer(player) {
+  localStorage.setItem('player', JSON.stringify(player))
 }
 
-export async function getCurrentPlayer() {
-  return await JSON.parse(localStorage.getItem('player'))
+export function getCurrentPlayer() {
+  return JSON.parse(localStorage.getItem('player'))
 }
 
-export async function removeCurrentPlayer() {
+export function getPlayerId(player) {
+  return player.player_id
+}
+
+export function removeCurrentPlayer() {
   localStorage.removeItem('player')
   window.location = "login.html"
 }

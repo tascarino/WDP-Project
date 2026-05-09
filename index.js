@@ -5,6 +5,7 @@ const app = express()
 app.use(express.json())
 
 const playerRoutes = require("./server/routes/player")
+const sessionRoutes = require("./server/routes/session")
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -17,6 +18,7 @@ app.use(express.static(__dirname + "/public"))
 app.get('/', (req, res) => res.sendFile(path.join(__dirname, '/public/sessionlog.html')));
 
 app.use("/player", playerRoutes)
+app.use("/session", sessionRoutes)
 
 // instead of having a domain name like, www.bestrecipes.com, 
 // we are using localhost:3500
