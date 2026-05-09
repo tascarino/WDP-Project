@@ -55,7 +55,19 @@ function register(e) {
       password: password
     }
 
-    console.log(player)
+    fetchData('/player/register', player, "POST")
+      .then(data => {
+        if (!data.message) {
+          setCurrentPlayer(data)
+          window.location.href = "sessionlog.html"
+        }
+      })
+      .catch(err => {
+        let error = document.getElementById("error")
+        error.innerText = err.message
+        document.getElementById("password").value = ""
+      })
+
   } else {
     console.log("Password sucks! Do better. (At least 10 characters)")
   }
