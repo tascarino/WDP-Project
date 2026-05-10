@@ -121,9 +121,8 @@ form {
 footer {
   border-top: 10px solid transparent;
   border-image: url(./images/border.png) 23 round;
-  position: fixed;
-  bottom: 0;
   width: 100%;
+  margin-top: 40px; 
 }
 
 footer div {
@@ -133,3 +132,32 @@ footer div {
   height: 50px;
   border: solid 5px rgb(97, 30, 15);
 }
+
+#session-wrapper {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+#session-form {
+  width: 350px;
+}
+
+#session-display {
+  width: 400px;
+  height: 500px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-right: 10px;
+}
+
+#session-display div {
+  border: 1px solid #ccc;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 6px;
+  background: #fafafa;
+}
+

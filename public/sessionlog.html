@@ -21,22 +21,65 @@
 
   <main>
     <h2 id="session-log">&#11090;Session Thread&#11090;</h2>
+    <div id="session-wrapper">
+      <div id="session-form">
+        <form id="session-form">
+          <label for="session-name">Session Name: </label>
+          <br>
+          <input type="text" id="session-name">
+          <br>
+          <label for="campaign-name">Campaign:</label>
+          <br>
+          <input type="text" id="campaign-name">
+          <br>
+          <label for="session-desc">Session Description:</label>
+          <br>
+          <input type="text" id="session-desc">
+          <br><br>
+          <input type="submit" value="Log Session">
+        </form>
+      </div>
 
-    <form id="session-form">
-      <label for="session-name">Session Name: </label>
-      <br>
-      <input type="text" id="session-name">
-      <br>
-      <label for="campaign-name">Campaign:</label>
-      <br>
-      <input type="text" id="campaign-name">
-      <br>
-      <label for="session-desc">Session Description:</label>
-      <br>
-      <input type="text" id="session-desc">
-      <br><br>
-      <input type="submit" value="Log Session">
-    </form>
+      <div id="session-display"></div>
+    </div>
+
+    <!-- here for the sake of "i dont want to break my code the day before submission if i move it" -->
+    <script type="module">
+      import { getCurrentPlayer, getPlayerId } from "./scripts/player.js"
+      async function loadSessions() {
+        try {
+          let player = getCurrentPlayer()
+          let player_id = getPlayerId(player)
+
+          const res = await fetch("http://localhost:3500/session/getAllSessions");
+          let sessions = await res.json();
+
+          sessions = sessions
+            .filter(s => s.session_creator === player_id)
+            .sort((a, b) => new Date(b.date_created) - new Date(a.date_created));
+
+          const container = document.getElementById("session-display");
+          container.innerHTML = "";
+
+          sessions.forEach(s => {
+            const div = document.createElement("div");
+            div.innerHTML = `
+              <h3>${s.session_title}</h3>
+              <p>Campaign: ${s.campaign_name}</p>
+              <p>Log Created: ${s.date_created}</p>
+              <p>${s.session_notes || "No notes given for this session."}</p>
+            `;
+            container.appendChild(div);
+          });
+
+        } catch (err) {
+          console.error("Error in loadSessions:", err);
+        }
+      }
+
+      loadSessions();
+    </script>
+
   </main>
 
   <footer>

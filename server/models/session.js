@@ -5,7 +5,7 @@ async function createSessionTable() {
     CREATE TABLE IF NOT EXISTS \`Session\` (
       session_id INT NOT NULL AUTO_INCREMENT,
       session_title VARCHAR(255) NOT NULL,
-      date_created DATE,
+      date_created DATETIME,
       session_notes VARCHAR(1500),
       campaign_name VARCHAR(255) NOT NULL,
       session_creator INT NOT NULL,
@@ -30,7 +30,7 @@ async function createSessionPost(session) {
 
   let sql = `
     INSERT INTO Session(session_title, date_created, session_notes, campaign_name, session_creator)
-    VALUES (?, CURDATE(), ?, ?, ?)
+    VALUES (?, NOW(), ?, ?, ?)
   `
 
   await con.query(sql, [session.session_title, session.session_notes, session.campaign_name, session.session_creator])

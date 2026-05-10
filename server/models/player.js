@@ -69,8 +69,12 @@ async function deletePlayer(player) {
   if (!cPlayer) throw Error("Player doesn't exist!")
 
   let sql = `
-    
+    DELETE FROM Player
+    WHERE player_id=?
   `
+
+  await con.query(sql, [player.player_id])
+  return cPlayer;
 }
 
 async function getPlayerByUsername(username) {

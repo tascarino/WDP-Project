@@ -2,7 +2,6 @@ import { getCurrentPlayer, getPlayerId } from "./player.js";
 import { fetchData } from "./main.js"
 
 let cPlayer = getCurrentPlayer()
-console.log("test" + cPlayer)
 if(!cPlayer) window.location = "login.html"
 
 let sessionForm = document.getElementById("session-form")
