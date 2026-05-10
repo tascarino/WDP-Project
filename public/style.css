@@ -101,6 +101,20 @@ h2 {
   mask: radial-gradient(12px at 12px 12px, #0000 98%, #000) -12px -12px;
 }
 
+#profile h2 {
+  background-image: none;
+}
+
+#profile h3 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+#profile h4 {
+  text-align: center;
+  margin: 2px;
+}
+
 #register {
   width: 300px;
 }
@@ -113,9 +127,17 @@ h2 {
   width: 200px;
 }
 
+#profile-header {
+  width: 300px;
+}
+
 h2,
 form {
   text-align: center;
+}
+
+#delete-form {
+  margin-top: 50px;
 }
 
 footer {

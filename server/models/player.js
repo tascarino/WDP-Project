@@ -48,19 +48,15 @@ async function register(player) {
 
 // UPDATE
 async function update(player) {
-  let cPlayer = await playerExists(player)
-  if (!cPlayer) throw Error("Player doesn't exist!")
-
   let sql = `
     UPDATE player
     SET first_name=?, 
-        last_name=?, 
-        username=?
+        last_name=?
     WHERE player_id=?;
   `
 
-  await con.query(sql, [player.first_name, player.last_name, player.username, cPlayer.player_id])
-  return await getPlayerByUsername(player.username)
+  await con.query(sql, [player.first_name, player.last_name, player.player_id])
+  return await getPlayerById(player.player_id)
 }
 
 // DELETE
@@ -86,6 +82,15 @@ async function getPlayerByUsername(username) {
   return cPlayer[0]
 }
 
+async function getPlayerById(id) {
+  let sql = `
+    SELECT * FROM Player
+    WHERE player_id=?
+  `
+  let result = await con.query(sql, [id])
+  return result[0]
+}
+
 async function getAllPlayers() {
     let sql = `
       SELECT * FROM Player;
@@ -104,4 +109,4 @@ async function playerExists(player) {
 }
 
 
-module.exports = { getAllPlayers, login, register, playerExists }
+module.exports = { getAllPlayers, login, register, update, deletePlayer, getPlayerByUsername, getPlayerById, playerExists }

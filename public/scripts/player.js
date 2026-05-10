@@ -3,11 +3,15 @@ import { fetchData } from "./main.js"
 // grab the forms and add to a variable
 let loginForm = document.getElementById("login-form")
 let registrationForm = document.getElementById("registration-form")
+let updateForm = document.getElementById("update-form")
+let deleteForm = document.getElementById("delete-form")
 
 // add event listener to forms
 // make sure to check to see if login form exists before adding event listener
 if (loginForm) loginForm.addEventListener('submit', login)
 if (registrationForm) registrationForm.addEventListener('submit', register)
+if (updateForm) updateForm.addEventListener('submit', update)
+if (deleteForm) deleteForm.addEventListener('submit', deletePlayer)
 
 //create function that will take in data from form and create a new user object
 function login(e) {
@@ -58,7 +62,7 @@ function register(e) {
     fetchData('/player/register', player, "POST")
       .then(data => {
         if (!data.message) {
-          setCurrentPlayer(data)
+          setCurrentPlayer(data.player)
           window.location.href = "sessionlog.html"
         }
       })
@@ -73,6 +77,40 @@ function register(e) {
   }
 }
 
+function update(e) {
+  e.preventDefault()
+
+  let current = getCurrentPlayer()
+  let first_name = document.getElementById("fname").value
+  let last_name = document.getElementById("lname").value
+
+  const player = {
+    player_id: current.player_id,
+    first_name: first_name,
+    last_name: last_name,
+  }
+
+  fetchData('/player/update', player, "POST")
+    .then(data => {
+      if (!data.message) {
+        setCurrentPlayer(data.player)
+        window.location.href = "profile.html"
+      }
+    })
+    .catch(err => {
+      let error = document.getElementById("error")
+      error.innerText = err.message
+    })
+
+}
+
+function deletePlayer(e) {
+  e.preventDefault()
+
+
+
+}
+
 function checkPassword(password) {
   if (password.length >= 10) {
     return true
@@ -80,12 +118,24 @@ function checkPassword(password) {
   return false
 }
 
+//change back if broken
 function setCurrentPlayer(player) {
+  if (!player) return
   localStorage.setItem('player', JSON.stringify(player))
 }
 
+//change back if broken
 export function getCurrentPlayer() {
-  return JSON.parse(localStorage.getItem('player'))
+  const stored = localStorage.getItem('player')
+  if (!stored || stored === "undefined") return null
+
+  try {
+    return JSON.parse(stored)
+  } catch (err) {
+    console.error("Invalid player data:", err)
+    localStorage.removeItem('player')
+    return null
+  }
 }
 
 export function getPlayerId(player) {
