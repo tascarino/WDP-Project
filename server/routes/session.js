@@ -27,4 +27,22 @@ router
   }
 })
 
+.put('/update/:session_id', async (req, res) => {
+    try {
+        await post.update(req.params.session_id, req.body)
+        res.send({message: "Post updated successfully"})
+    } catch(err) {
+        res.status(401).send({message: err.message})
+    }
+})
+
+.delete('/deleteSession/:session_id', async (req, res) => {
+    try {
+        await post.deleteSession(req.params.session_id)
+        res.send({message: "Post deleted successfully"})
+    } catch(err) {
+        res.status(401).send({message: err.message})
+    }
+})
+
 module.exports = router

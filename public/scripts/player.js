@@ -104,13 +104,6 @@ function update(e) {
 
 }
 
-function deletePlayer(e) {
-  e.preventDefault()
-
-
-
-}
-
 function checkPassword(password) {
   if (password.length >= 10) {
     return true

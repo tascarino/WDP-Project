@@ -38,6 +38,25 @@ async function createSessionPost(session) {
   return await sessionExists(session)
 }
 
+async function update(session) {
+    let sql = `
+      UPDATE post
+      SET session_title=?, session_notes=?, campaign_name=?
+      WHERE session_id = ?
+    `
+    await con.query(sql, [
+        session.session_title,
+        session.session_notes,
+        session.campaign_name,
+        session.session_id
+    ])
+}
+
+async function deleteSession(session) {
+    let sql = `DELETE FROM Session WHERE session_id = ?`
+    await con.query(sql, [session.session_id])
+}
+
 async function sessionExists(session) {
   let sql = `
     SELECT * FROM Session

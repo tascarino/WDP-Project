@@ -20,7 +20,7 @@ router
         res.status(401).send({message: err.message})
     }
 })
-// change back if broken
+
 .post('/register', async (req, res) => {
   try {
     const player = await Player.register(req.body)
@@ -30,7 +30,6 @@ router
   }
 })
 
-//change back if broken
 .post('/update', async (req, res) => {
   try {
     const player = await Player.update(req.body)
@@ -38,6 +37,15 @@ router
   } catch (err) {
     res.status(401).send({ message: err.message })
   }
+})
+
+.delete('/deletePlayer/:player_id', async (req, res) => {
+    try {
+        await user.deletePlayer(req.params.player_id)
+        res.send({message: "Player deleted successfully"})
+    } catch(err) {
+        res.status(401).send({message: err.message})
+    }
 })
 
 module.exports = router
